@@ -15,25 +15,42 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+    }
+    .container {
+      display: flex;
+      width: 90%;
+      max-width: 1200px;
+      justify-content: space-between;
+    }
+    .left, .middle, .right {
+      flex: 1;
+      margin: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .left {
+      background: linear-gradient(135deg, #ff9a9e, #fecfef);
     }
     h1 {
       text-align: center;
-      margin: 20px 0;
+      margin: 10px 0;
       color: white;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
     #quote {
       text-align: center;
-      margin: 20px 0;
+      margin: 10px 0;
       color: white;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       font-style: italic;
     }
     #weather, #forecast {
       background-color: rgba(255, 255, 255, 0.8);
-      padding: 20px;
+      padding: 10px;
       border-radius: 10px;
-      margin: 20px;
+      margin: 10px 0;
     }
     #forecast {
       display: flex;
@@ -42,24 +59,46 @@
     }
     .forecast-day {
       text-align: center;
-      margin: 10px;
+      margin: 5px;
     }
     .forecast-icon {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
+    }
+    iframe {
+      border-width: 0;
+      width: 100%;
+      height: 500px;
+    }
+    #countdown {
+      text-align: center;
+      font-size: 2em;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
   </style>
 </head>
 <body>
   <h1>Komma Family Display</h1>
   <div id="quote">Loading quote...</div>
-  <div id="weather">
-    <h2>Current Weather</h2>
-    <p id="weather-data">Loading weather...</p>
-    <p id="sunrise-sunset">Loading sunrise and sunset times...</p>
-  </div>
-  <div id="forecast">
-    <!-- Forecast data will be inserted here -->
+  <div class="container">
+    <div class="left">
+      <h2>Summer Break</h2>
+      <div id="countdown">Loading countdown...</div>
+    </div>
+    <div class="middle">
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&showNav=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&title=Komma%20Family%20Calander%20&src=bG5nYXRwb3A4MG00ZGRmcGRiZTk3M29yOWo5NTAwOTlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23E4C441" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div class="right">
+      <div id="weather">
+        <h2>Current Weather</h2>
+        <p id="weather-data">Loading weather...</p>
+        <p id="sunrise-sunset">Loading sunrise and sunset times...</p>
+      </div>
+      <div id="forecast">
+        <!-- Forecast data will be inserted here -->
+      </div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
