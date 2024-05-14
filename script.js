@@ -23,4 +23,23 @@ document.addEventListener('DOMContentLoaded', function() {
       weatherElement.textContent = 'Unable to fetch weather data';
       console.error('Error fetching weather data:', error);
     });
+
+  // Array of background images
+  const backgroundImages = [
+    'https://wallpaperaccess.com/full/969650.jpg',
+    // Add more URLs as needed
+  ];
+
+  let currentImageIndex = 0;
+
+  function changeBackgroundImage() {
+    document.body.style.backgroundImage = `url(${backgroundImages[currentImageIndex]})`;
+    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+  }
+
+  // Initial background image
+  changeBackgroundImage();
+
+  // Change background image every 10 minutes (600000 milliseconds)
+  setInterval(changeBackgroundImage, 600000);
 });
