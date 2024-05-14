@@ -3,30 +3,42 @@ document.addEventListener('DOMContentLoaded', function() {
   const city = 'Willoughby,us';
   const weatherElement = document.getElementById('weather-data');
   const forecastElement = document.getElementById('forecast');
+  const quoteElement = document.getElementById('quote');
+  const sunriseSunsetElement = document.getElementById('sunrise-sunset');
 
   // Fetch current weather data
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
-      const temp = Math.round(data.main.temp - 273.15); // Convert from Kelvin to Celsius
+      const temp = Math.round(data.main.temp); // Temperature in Fahrenheit
       const weatherDescription = data.weather[0].description;
       const humidity = data.main.humidity;
       const windSpeed = data.wind.speed;
 
+      // Convert sunrise and sunset from UNIX timestamp to local time
+      const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
       weatherElement.innerHTML = `
-        Temperature: ${temp}°C<br>
+        Temperature: ${temp}°F<br>
         Weather: ${weatherDescription}<br>
         Humidity: ${humidity}%<br>
         Wind Speed: ${windSpeed} m/s
       `;
+
+      sunriseSunsetElement.innerHTML = `
+        Sunrise: ${sunrise}<br>
+        Sunset: ${sunset}
+      `;
     })
     .catch(error => {
       weatherElement.textContent = 'Unable to fetch weather data';
+      sunriseSunsetElement.textContent = 'Unable to fetch sunrise and sunset times';
       console.error('Error fetching weather data:', error);
     });
 
   // Fetch 5-day forecast data
-  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
@@ -42,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const forecast = forecastList[i];
         const date = new Date(forecast.dt * 1000);
         const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-        const temp = Math.round(forecast.main.temp - 273.15); // Convert from Kelvin to Celsius
+        const temp = Math.round(forecast.main.temp); // Temperature in Fahrenheit
         const icon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
         const description = forecast.weather[0].description;
 
@@ -50,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="forecast-day">
             <h3>${day}</h3>
             <img src="${icon}" class="forecast-icon" alt="${description}">
-            <p>${temp}°C</p>
+            <p>${temp}°F</p>
             <p>${description}</p>
           </div>
         `;
@@ -63,10 +75,24 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Error fetching forecast data:', error);
     });
 
+  // Fetch quote of the day
+  fetch('https://api.quotable.io/random')
+    .then(response => response.json())
+    .then(data => {
+      quoteElement.textContent = `"${data.content}" — ${data.author}`;
+    })
+    .catch(error => {
+      quoteElement.textContent = 'Unable to fetch quote';
+      console.error('Error fetching quote:', error);
+    });
+
+  // Set the background image
+  const backgroundImage = 'https://wallpaperaccess.com/full/31193.jpg';
+  document.body.style.backgroundImage = `url(${backgroundImage})`;
+
   // Array of background images
   const backgroundImages = [
-    'https://wallpaperaccess.com/full/31193.jpg',
-    'https://tpc.googlesyndication.com/simgad/11737315947385431178?sqp=4sqPyQQ7QjkqNxABHQAAtEIgASgBMAk4A0DwkwlYAWBfcAKAAQGIAQGdAQAAgD-oAQGwAYCt4gS4AV_FAS2ynT4&rs=AOga4qkW_x9Wa1x7rrxurRUTCSm_TPzX5w'
+    'https://wallpaperaccess.com/full/31193.jpg'
   ];
 
   let currentImageIndex = 0;
