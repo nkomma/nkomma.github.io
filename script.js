@@ -33,13 +33,4 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentImageIndex = 0;
 
   function changeBackgroundImage() {
-    document.body.style.backgroundImage = `url(${backgroundImages[currentImageIndex]})`;
-    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-  }
-
-  // Initial background image
-  changeBackgroundImage();
-
-  // Change background image every 10 minutes (600000 milliseconds)
-  setInterval(changeBackgroundImage, 600000);
-});
+    document.body.style.backgroundImage 
