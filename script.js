@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const apiKey = 4cf8c82db85343f1bfbc039a273bb4e7;
-  const city = 'YOUR_CITY_NAME';
+  const city = 44094;
   const weatherElement = document.getElementById('weather-data');
 
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
