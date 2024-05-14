@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Array of background images
   const backgroundImages = [
-    'https://wallpaperaccess.com/full/969650.jpg',
+    https://wallpaperaccess.com/full/969650.jpg,
+    https://wallpaperaccess.com/full/31193.jpg
     // Add more URLs as needed
   ];
 
