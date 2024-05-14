@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const apiKey = '4cf8c82db85343f1bfbc039a273bb4e7';
   const city = 'Willoughby,us';
   const weatherElement = document.getElementById('weather-data');
+  const forecastElement = document.getElementById('forecast');
 
-  // Fetch weather data
+  // Fetch current weather data
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
@@ -22,6 +23,39 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => {
       weatherElement.textContent = 'Unable to fetch weather data';
       console.error('Error fetching weather data:', error);
+    });
+
+  // Fetch 5-day forecast data
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      const forecastList = data.list;
+      let forecastHTML = '';
+
+      // Extract one forecast per day (e.g., at 12:00 each day)
+      for (let i = 0; i < forecastList.length; i += 8) {
+        const forecast = forecastList[i];
+        const date = new Date(forecast.dt * 1000);
+        const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+        const temp = Math.round(forecast.main.temp - 273.15); // Convert from Kelvin to Celsius
+        const icon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+        const description = forecast.weather[0].description;
+
+        forecastHTML += `
+          <div class="forecast-day">
+            <h3>${day}</h3>
+            <img src="${icon}" class="forecast-icon" alt="${description}">
+            <p>${temp}°C</p>
+            <p>${description}</p>
+          </div>
+        `;
+      }
+
+      forecastElement.innerHTML = forecastHTML;
+    })
+    .catch(error => {
+      forecastElement.innerHTML = 'Unable to fetch forecast data';
+      console.error('Error fetching forecast data:', error);
     });
 
   // Array of background images
