@@ -27,7 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Fetch 5-day forecast data
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
     .then(data => {
       const forecastList = data.list;
       let forecastHTML = '';
