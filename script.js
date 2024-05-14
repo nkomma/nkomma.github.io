@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   const apiKey = '4cf8c82db85343f1bfbc039a273bb4e7';
-  const city = 'Willoughby,us'; // Specify the country code to avoid ambiguity
+  const city = 'Willoughby,us';
   const weatherElement = document.getElementById('weather-data');
 
+  // Fetch weather data
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
