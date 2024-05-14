@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const forecastElement = document.getElementById('forecast');
   const quoteElement = document.getElementById('quote');
   const sunriseSunsetElement = document.getElementById('sunrise-sunset');
+  const countdownElement = document.getElementById('countdown');
 
   // Fetch current weather data
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`)
@@ -90,21 +91,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const backgroundImage = 'https://wallpaperaccess.com/full/31193.jpg';
   document.body.style.backgroundImage = `url(${backgroundImage})`;
 
-  // Array of background images
-  const backgroundImages = [
-    'https://wallpaperaccess.com/full/31193.jpg'
-  ];
+  // Countdown timer
+  function updateCountdown(targetDate) {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-  let currentImageIndex = 0;
+    if (distance < 0) {
+      countdownElement.innerHTML = "The countdown is over!";
+      return;
+    }
 
-  function changeBackgroundImage() {
-    document.body.style.backgroundImage = `url(${backgroundImages[currentImageIndex]})`;
-    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  // Initial background image
-  changeBackgroundImage();
-
-  // Change background image every 10 minutes (600000 milliseconds)
-  setInterval(changeBackgroundImage, 600000);
+  // Set the target date and time for the countdown
+  const targetDate = new Date("May 22, 2024 15:00:00 EST").getTime();
+  updateCountdown(targetDate);
+  setInterval(() => updateCountdown(targetDate), 1000);
 });
