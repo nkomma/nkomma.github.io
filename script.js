@@ -26,9 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Array of background images
   const backgroundImages = [
-    https://wallpaperaccess.com/full/969650.jpg,
-    https://wallpaperaccess.com/full/31193.jpg
-    // Add more URLs as needed
+    'https://wallpaperaccess.com/full/31193.jpg',
+    'https://tpc.googlesyndication.com/simgad/11737315947385431178?sqp=4sqPyQQ7QjkqNxABHQAAtEIgASgBMAk4A0DwkwlYAWBfcAKAAQGIAQGdAQAAgD-oAQGwAYCt4gS4AV_FAS2ynT4&rs=AOga4qkW_x9Wa1x7rrxurRUTCSm_TPzX5w'
   ];
 
   let currentImageIndex = 0;
