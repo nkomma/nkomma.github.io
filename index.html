@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Komma Display</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="calendar">
-    <iframe src="https://p27-caldav.icloud.com/published/2/MTc2OTcyMjE3MTc2OTcyMhnZa11fzZr8oIEuXiXsrqFku0m-Ne_BcFhlN68mLdHTwdZzAsrMVrwJ_nLmasEzkWR0XGss5Qtoo9EC83uEgdQ" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-  </div>
-  <div id="weather">
-    <h2>Weather</h2>
-    <p id="weather-data">Loading weather...</p>
-  </div>
-  <!-- Add other widgets as needed -->
-  <script src="script.js"></script>
-</body>
-</html>
+document.addEventListener('DOMContentLoaded', function() {
+  const apiKey = '4cf8c82db85343f1bfbc039a273bb4e7';
+  const city = 'Willoughby,us';
+  const weatherElement = document.getElementById('weather-data');
+
+  // Fetch weather data
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      const temp = Math.round(data.main.temp - 273.15); // Convert from Kelvin to Celsius
+      const weatherDescription = data.weather[0].description;
+      const humidity = data.main.humidity;
+      const windSpeed = data.wind.speed;
+
+      weatherElement.innerHTML = `
+        Temperature: ${temp}°C<br>
+        Weather: ${weatherDescription}<br>
+        Humidity: ${humidity}%<br>
+        Wind Speed: ${windSpeed} m/s
+      `;
+    })
+    .catch(error => {
+      weatherElement.textContent = 'Unable to fetch weather data';
+      console.error('Error fetching weather data:', error);
+    });
+});
