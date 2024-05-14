@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+  const apiKey = 4cf8c82db85343f1bfbc039a273bb4e7;
   const city = 'YOUR_CITY_NAME';
   const weatherElement = document.getElementById('weather-data');
 
