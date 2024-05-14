@@ -1,7 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Display</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <div id="calendar">
+    <iframe src="YOUR_GOOGLE_CALENDAR_EMBED_URL" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
+  <div id="weather">
+    <h2>Weather</h2>
+    <p id="weather-data">Loading weather...</p>
+  </div>
+  <!-- Add other widgets as needed -->
+  <script src="script.js"></script>
 </body>
 </html>
