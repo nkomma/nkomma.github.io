@@ -121,10 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function showNextSlide() {
     currentIndex++;
-    if (currentIndex >= carouselItems.length) {
+    if (currentIndex >= carouselItems.length / 4) {
       currentIndex = 0;
     }
-    carouselSlide.style.transform = `translateX(-${currentIndex * 25}%)`;
+    carouselSlide.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
 
   // Rotate every 60 seconds (60000 milliseconds)
