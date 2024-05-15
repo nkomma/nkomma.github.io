@@ -11,15 +11,27 @@ body {
   font-size: 1.5em;
 }
 
-.container {
+.carousel-container {
   display: flex;
+  overflow: hidden;
   width: 90%;
   max-width: 1200px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  height: 100%;
 }
 
-.left, .middle, .right {
+.carousel-slide {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  width: 600%;
+}
+
+.carousel-item {
+  min-width: 25%;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.section {
   flex: 1;
   margin: 10px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -107,11 +119,11 @@ iframe {
 }
 
 @media (max-width: 800px) {
-  .container {
+  .carousel-container {
     flex-direction: column;
     align-items: center;
   }
-  .left, .middle, .right {
+  .carousel-item {
     width: 100%;
     margin: 10px 0;
   }
