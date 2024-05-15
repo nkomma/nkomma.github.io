@@ -22,7 +22,7 @@
         <div id="countdown">Loading countdown...</div>
       </div>
       <div class="navyleft">
-        <h2>Cooperstown Countdown</h2>
+        <h2>C-town Countdown</h2>
         <div id="countdown2">Loading countdown...</div>
       </div>
     </div>
@@ -30,14 +30,18 @@
       <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&showNav=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&title=Komma%20Family%20Calander%20&src=bG5nYXRwb3A4MG00ZGRmcGRiZTk3M29yOWo5NTAwOTlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23E4C441" frameborder="0" scrolling="no"></iframe>
     </div>
     <div class="grid-item">
-      <div id="weather">
-        <h2>Current Weather</h2>
-        <p id="weather-data">Loading weather...</p>
-        <p id="sunrise-sunset">Loading sunrise and sunset times...</p>
-      </div>
-      <div id="forecast">
-        <!-- Forecast data will be inserted here -->
-      </div>
+      <h2>Weather</h2>
+      <a class="weatherwidget-io" href="https://forecast7.com/en/41d64n81d41/willoughby/?unit=us" data-label_1="WILLOUGHBY" data-label_2="WEATHER" data-days="5" data-theme="pure">WILLOUGHBY WEATHER</a>
+      <script>
+        !function(d,s,id){
+          var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){
+            js=d.createElement(s);js.id=id;
+            js.src='https://weatherwidget.io/js/widget.min.js';
+            fjs.parentNode.insertBefore(js,fjs);
+          }
+        }(document,'script','weatherwidget-io-js');
+      </script>
     </div>
     <div class="grid-item">
       <h2>Section 4</h2>

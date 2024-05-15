@@ -1,4 +1,6 @@
+/* General Styles */
 body {
+  background: linear-gradient(135deg, #f0f0f5, #dcdce3);
   background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out;
@@ -8,6 +10,8 @@ body {
   flex-direction: column;
   align-items: center;
   font-size: 1.5em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
 }
 
 #clock-container {
@@ -15,8 +19,7 @@ body {
   top: 20px;
   right: 20px;
   text-align: right;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #333;
 }
 
 #clock {
@@ -33,15 +36,13 @@ header {
 }
 
 h1 {
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #333;
   font-size: 3em;
 }
 
 #quote {
   margin: 10px 0;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #333;
   font-style: italic;
   font-size: 2em;
 }
@@ -56,28 +57,35 @@ h1 {
 }
 
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #f7f7f7;
   padding: 20px;
-  border-radius: 10px;
-  box-sizing: border-box;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
 }
 
 .pink-background {
   background: linear-gradient(135deg, #ff9a9e, #fecfef);
   padding: 10px;
   border-radius: 10px;
+  color: #fff;
+  margin-bottom: 20px; /* Add margin between the countdowns */
 }
 
 .navyleft {
-  background: navy;
+  background: #003366;
   padding: 10px;
   border-radius: 10px;
+  color: #fff;
 }
 
 h2 {
@@ -86,7 +94,7 @@ h2 {
 }
 
 #weather, #forecast {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #f7f7f7;
   padding: 20px;
   border-radius: 10px;
   margin: 20px 0;
@@ -117,8 +125,10 @@ iframe {
 #countdown, #countdown2 {
   text-align: center;
   font-size: 2.5em;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%; /* Ensure both countdowns are the same width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 /* Responsive styles */
