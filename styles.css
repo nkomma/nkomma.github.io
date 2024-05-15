@@ -21,11 +21,11 @@ body {
 .carousel-slide {
   display: flex;
   transition: transform 1s ease-in-out;
-  width: 100%;
+  width: 300%; /* Ensure the slide width accounts for the new item width */
 }
 
 .carousel-item {
-  flex: 0 0 25%; /* Show 4 items at a time */
+  flex: 0 0 75%; /* Show fewer items at a time to make each item wider */
   box-sizing: border-box;
   padding: 20px;
 }
