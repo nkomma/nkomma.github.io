@@ -7,70 +7,82 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: 1.5em;
 }
 
-.carousel-container {
-  width: 90%;
-  max-width: 1200px;
-  overflow: hidden;
-  height: 100%;
+#clock-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.carousel-slide {
-  display: flex;
-  transition: transform 1s ease-in-out;
-  width: 300%; /* Ensure the slide width accounts for the new item width */
+#clock {
+  font-size: 4em;
 }
 
-.carousel-item {
-  flex: 0 0 75%; /* Show fewer items at a time to make each item wider */
-  box-sizing: border-box;
-  padding: 20px;
-  display: flex; /* Flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+#date {
+  font-size: 2em;
 }
 
-.section {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: flex; /* Flexbox for centering */
-  flex-direction: column; /* Column direction for vertical centering */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  text-align: center; /* Center text */
-}
-
-.left {
-  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+header {
+  text-align: center;
+  margin: 20px 0;
 }
 
 h1 {
-  text-align: center;
-  margin: 10px 0;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-size: 3em;
 }
 
-h2 {
-  font-size: 2.5em;
-  text-align: center;
-}
-
 #quote {
-  text-align: center;
   margin: 10px 0;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-style: italic;
   font-size: 2em;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1600px;
+  margin-top: 20px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.pink-background {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.navyleft {
+  background: navy;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 2.5em;
+  text-align: center;
 }
 
 #weather, #forecast {
@@ -99,15 +111,14 @@ h2 {
 iframe {
   border-width: 0;
   width: 100%;
-  height: 500px;
+  height: 400px;
 }
 
-#countdown {
+#countdown, #countdown2 {
   text-align: center;
   font-size: 2.5em;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  padding: 10px;
 }
 
 /* Responsive styles */
@@ -121,22 +132,20 @@ iframe {
   #quote {
     font-size: 1.5em;
   }
-  #countdown {
+  #countdown, #countdown2 {
     font-size: 2em;
+  }
+  #clock {
+    font-size: 3em;
+  }
+  #date {
+    font-size: 1.5em;
   }
 }
 
 @media (max-width: 800px) {
-  .carousel-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .carousel-item {
-    width: 100%;
-    margin: 10px 0;
-  }
   iframe {
-    height: 400px;
+    height: 300px;
   }
 }
 
@@ -150,7 +159,7 @@ iframe {
   #quote {
     font-size: 1.2em;
   }
-  #countdown {
+  #countdown, #countdown2 {
     font-size: 1.5em;
   }
   .forecast-icon {
@@ -158,6 +167,12 @@ iframe {
     height: 40px;
   }
   iframe {
-    height: 300px;
+    height: 200px;
+  }
+  #clock {
+    font-size: 2em;
+  }
+  #date {
+    font-size: 1em;
   }
 }

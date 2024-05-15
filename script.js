@@ -6,6 +6,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const quoteElement = document.getElementById('quote');
   const sunriseSunsetElement = document.getElementById('sunrise-sunset');
   const countdownElement = document.getElementById('countdown');
+  const countdownElement2 = document.getElementById('countdown2');
+  const clockElement = document.getElementById('clock');
+  const dateElement = document.getElementById('date');
+
+  // Update clock and date
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}:${seconds}`;
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = now.toLocaleDateString('en-US', options);
+
+    clockElement.textContent = formattedTime;
+    dateElement.textContent = formattedDate;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
 
   // Fetch current weather data
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`)
@@ -92,12 +112,12 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.style.backgroundImage = `url(${backgroundImage})`;
 
   // Countdown timer
-  function updateCountdown(targetDate) {
+  function updateCountdown(targetDate, element) {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
     if (distance < 0) {
-      countdownElement.innerHTML = "The countdown is over!";
+      element.innerHTML = "The countdown is over!";
       return;
     }
 
@@ -106,27 +126,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    element.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  // Set the target date and time for the countdown
-  const targetDate = new Date("May 22, 2024 15:00:00 EST").getTime();
-  updateCountdown(targetDate);
-  setInterval(() => updateCountdown(targetDate), 1000);
-
-  // Carousel functionality
-  let currentIndex = 0;
-  const carouselSlide = document.querySelector('.carousel-slide');
-  const carouselItems = document.querySelectorAll('.carousel-item');
-
-  function showNextSlide() {
-    currentIndex++;
-    if (currentIndex >= carouselItems.length) {
-      currentIndex = 0;
-    }
-    carouselSlide.style.transform = `translateX(-${currentIndex * 75}%)`;
-  }
-
-  // Rotate every 60 seconds (60000 milliseconds)
-  setInterval(showNextSlide, 60000);
+  // Set the target date and time for the countdowns
+  const targetDate1 = new Date("May 22, 2024 15:00:00 EST").getTime();
+  const targetDate2 = new Date("June 7, 2024 09:00:00 EST").getTime();
+  updateCountdown(targetDate1, countdownElement);
+  updateCountdown(targetDate2, countdownElement2);
+  setInterval(() => updateCountdown(targetDate1, countdownElement), 1000);
+  setInterval(() => updateCountdown(targetDate2, countdownElement2), 1000);
 });
