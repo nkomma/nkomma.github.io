@@ -113,4 +113,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const targetDate = new Date("May 22, 2024 15:00:00 EST").getTime();
   updateCountdown(targetDate);
   setInterval(() => updateCountdown(targetDate), 1000);
+
+  // Carousel functionality
+  let currentIndex = 0;
+  const carouselSlide = document.querySelector('.carousel-slide');
+  const carouselItems = document.querySelectorAll('.carousel-item');
+
+  function showNextSlide() {
+    currentIndex++;
+    if (currentIndex >= carouselItems.length) {
+      currentIndex = 0;
+    }
+    carouselSlide.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  // Rotate every 60 seconds (60000 milliseconds)
+  setInterval(showNextSlide, 60000);
 });
