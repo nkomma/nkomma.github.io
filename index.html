@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Komma Family Display</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .weather-container {
+      width: 90%;
+      margin: 20px auto;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div id="clock-container">
@@ -16,37 +23,33 @@
     <div id="quote">Loading quote...</div>
   </header>
   <div class="grid-container">
+    <div class="grid-item calendar">
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FNew_York&bgcolor=%23ffffff&mode=MONTH&showTitle=0&showNav=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=bG5nYXRwb3A4MG00ZGRmcGRiZTk3M29yOWo5NTAwOTlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23E4C441" style="border:solid 1px #777" width="1260" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
     <div class="grid-item">
       <div class="pink-background">
         <h2>Summer Break</h2>
         <div id="countdown">Loading countdown...</div>
       </div>
       <div class="navyleft">
-        <h2>C-town Countdown</h2>
+        <h2>C-Town Countdown</h2>
         <div id="countdown2">Loading countdown...</div>
       </div>
     </div>
-    <div class="grid-item">
-      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&showNav=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&title=Komma%20Family%20Calander%20&src=bG5nYXRwb3A4MG00ZGRmcGRiZTk3M29yOWo5NTAwOTlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23E4C441" frameborder="0" scrolling="no"></iframe>
-    </div>
-    <div class="grid-item">
-      <h2>Weather</h2>
-      <a class="weatherwidget-io" href="https://forecast7.com/en/41d64n81d41/willoughby/?unit=us" data-label_1="WILLOUGHBY" data-label_2="WEATHER" data-days="5" data-theme="pure">WILLOUGHBY WEATHER</a>
-      <script>
-        !function(d,s,id){
-          var js,fjs=d.getElementsByTagName(s)[0];
-          if(!d.getElementById(id)){
-            js=d.createElement(s);js.id=id;
-            js.src='https://weatherwidget.io/js/widget.min.js';
-            fjs.parentNode.insertBefore(js,fjs);
-          }
-        }(document,'script','weatherwidget-io-js');
-      </script>
-    </div>
-    <div class="grid-item">
-      <h2>Section 4</h2>
-      <p>Content for section 4...</p>
-    </div>
+  </div>
+  <div class="weather-container">
+    <h2>Weather</h2>
+    <a class="weatherwidget-io" href="https://forecast7.com/en/41d64n81d41/willoughby/" data-label_1="WILLOUGHBY" data-label_2="WEATHER" data-icons="Climacons" data-theme="weather_one" style="width: 100%;">WILLOUGHBY WEATHER</a>
+    <script>
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js=d.createElement(s);js.id=id;
+          js.src='https://weatherwidget.io/js/widget.min.js';
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }(document,'script','weatherwidget-io-js');
+    </script>
   </div>
   <script src="script.js"></script>
 </body>
