@@ -65,6 +65,51 @@
        window.location.reload(1);
     }, 600000); // 600000 milliseconds = 10 minutes
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const apiKey = 'AIzaSyCiENyK4S3eTPdYDiMOaWPoAdJeRGcJM-A';
+      const spreadsheetId = '2PACX-1vTGXVOr4G0Qm86J1jnxNKShqOEmZlPMs9eSEUmej24HafP7tdCGa3CMXHufqhpsReKpCow7bw-lfK88';
+      const range = 'Sheet1!A1:D8'; // Adjust the range based on your sheet
+
+      const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
+      console.log(`Fetching data from: ${url}`);
+
+      fetch(url)
+        .then(response => {
+          console.log(`Response status: ${response.status}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.error) {
+            console.error('API error:', data.error);
+          } else {
+            const values = data.values;
+            if (values.length > 0) {
+              let tableBody = '';
+              values.forEach((row, rowIndex) => {
+                tableBody += '<tr>';
+                row.forEach((cell, cellIndex) => {
+                  if (rowIndex === 0) {
+                    tableBody += `<th>${cell}</th>`;
+                  } else {
+                    tableBody += `<td>${cell}</td>`;
+                  }
+                });
+                tableBody += '</tr>';
+              });
+              document.querySelector('.menu-plan tbody').innerHTML = tableBody;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching data from Google Sheets:', error);
+        });
+    });
+  </script>
 </head>
 <body>
   <div class="flag-widget-container">
@@ -93,48 +138,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Monday</td>
-            <td>Omelette</td>
-            <td>Grilled Chicken Salad</td>
-            <td>Spaghetti Bolognese</td>
-          </tr>
-          <tr>
-            <td>Tuesday</td>
-            <td>Smoothie</td>
-            <td>Turkey Sandwich</td>
-            <td>Chicken Stir Fry</td>
-          </tr>
-          <tr>
-            <td>Wednesday</td>
-            <td>Pancakes</td>
-            <td>Caesar Salad</td>
-            <td>Beef Tacos</td>
-          </tr>
-          <tr>
-            <td>Thursday</td>
-            <td>Yogurt with Fruit</td>
-            <td>BLT Sandwich</td>
-            <td>Grilled Salmon</td>
-          </tr>
-          <tr>
-            <td>Friday</td>
-            <td>Scrambled Eggs</td>
-            <td>Chicken Wrap</td>
-            <td>Pizza</td>
-          </tr>
-          <tr>
-            <td>Saturday</td>
-            <td>French Toast</td>
-            <td>Burger and Fries</td>
-            <td>Lasagna</td>
-          </tr>
-          <tr>
-            <td>Sunday</td>
-            <td>Bagel with Cream Cheese</td>
-            <td>Chicken Caesar Wrap</td>
-            <td>Roast Chicken</td>
-          </tr>
+          <!-- Data will be inserted here by JavaScript -->
         </tbody>
       </table>
     </div>
