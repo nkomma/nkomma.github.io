@@ -1,8 +1,8 @@
 /* General Styles */
 body {
-  background: linear-gradient(135deg, #f0f0f5, #dcdce3);
+  background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #333;
+  color: #f0f0f0;
   margin: 0;
   height: 100vh;
   display: flex;
@@ -15,15 +15,15 @@ body {
   top: 20px;
   right: 20px;
   text-align: right;
-  color: #333;
+  color: #f0f0f0;
 }
 
 #clock {
-  font-size: 4em;
+  font-size: 6em; /* Increase font size for better visibility */
 }
 
 #date {
-  font-size: 2em;
+  font-size: 3em; /* Increase font size for better visibility */
 }
 
 header {
@@ -32,16 +32,16 @@ header {
 }
 
 h1 {
-  color: #333;
-  font-size: 3em;
+  color: #f0f0f0;
+  font-size: 5em; /* Increase font size for better visibility */
   font-weight: 300;
 }
 
 #quote {
   margin: 10px 0;
-  color: #555;
+  color: #d0d0d0;
   font-style: italic;
-  font-size: 1.5em;
+  font-size: 2.5em; /* Increase font size for better visibility */
 }
 
 .grid-container {
@@ -54,7 +54,7 @@ h1 {
 }
 
 .grid-item {
-  background-color: #ffffff;
+  background-color: #333;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -72,18 +72,18 @@ h1 {
 }
 
 .pink-background {
-  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  background: linear-gradient(135deg, #ff9a9e, #ff9966); /* Pink to orange gradient */
   color: #fff;
   margin-bottom: 20px;
 }
 
 .navyleft {
-  background: #003366;
+  background: linear-gradient(135deg, #ff0000, #0000ff); /* Red and blue gradient */
   color: #fff;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 3em; /* Increase font size for better visibility */
   text-align: center;
   margin: 10px 0;
 }
@@ -97,7 +97,7 @@ iframe {
 
 #countdown, #countdown2 {
   text-align: center;
-  font-size: 2.5em;
+  font-size: 3em; /* Increase font size for better visibility */
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -107,25 +107,31 @@ iframe {
   grid-column: span 4;
 }
 
+.weather-container {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+}
+
 /* Responsive styles */
 @media (max-width: 1200px) {
   h1 {
-    font-size: 2.5em;
+    font-size: 4em;
   }
   h2 {
-    font-size: 1.75em;
+    font-size: 2.5em;
   }
   #quote {
-    font-size: 1.2em;
-  }
-  #countdown, #countdown2 {
     font-size: 2em;
   }
+  #countdown, #countdown2 {
+    font-size: 2.5em;
+  }
   #clock {
-    font-size: 3em;
+    font-size: 5em;
   }
   #date {
-    font-size: 1.5em;
+    font-size: 2.5em;
   }
 }
 
@@ -137,24 +143,24 @@ iframe {
 
 @media (max-width: 500px) {
   h1 {
-    font-size: 2em;
+    font-size: 3em;
   }
   h2 {
-    font-size: 1.5em;
+    font-size: 2em;
   }
   #quote {
-    font-size: 1em;
+    font-size: 1.5em;
   }
   #countdown, #countdown2 {
-    font-size: 1.5em;
+    font-size: 2em;
   }
   iframe {
     height: 200px;
   }
   #clock {
-    font-size: 2em;
+    font-size: 4em;
   }
   #date {
-    font-size: 1em;
+    font-size: 2em;
   }
 }
